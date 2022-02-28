@@ -4,7 +4,7 @@ import { ServiceTestService } from 'src/app/service/service-test.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+  styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDataRequest();
+    //this.getDataRequest();
   }
 
   getDataRequest(){
@@ -26,6 +26,4 @@ export class IndexComponent implements OnInit {
         }
       )
   }
-
-
 }
