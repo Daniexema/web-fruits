@@ -11,5 +11,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+public cart:any={title:"Mi Carrito"}
 }

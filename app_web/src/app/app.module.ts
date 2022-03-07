@@ -1,24 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { HttpClientModule } from '@angular/common/http';
+import {ViewcardComponent} from './components/view-card/viewcard.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
+import  {HeaderComponent} from './components/header/header.component';
+import {ProductService} from './components/view-card/product.service';
+
+
+const routes: Routes = [
+  { path: '',redirectTo:"/index", pathMatch:"full"},
+  { path: 'index',component:IndexComponent},
+  { path: 'cart', component: ShoppingcartComponent }
+];
 //*Material-UI
 //*@Angular-Material
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent  
+    HeaderComponent,
+    IndexComponent,
+    ViewcardComponent,
+    ShoppingcartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
     ],
-  providers: [],
+    //Remeber inject el service from providers
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

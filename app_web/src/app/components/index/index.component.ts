@@ -9,7 +9,7 @@ import { ServiceTestService } from 'src/app/service/service-test.service';
 export class IndexComponent implements OnInit {
 
   constructor(
-    private service : ServiceTestService 
+    private service : ServiceTestService
   ) { }
 
   ngOnInit() {
