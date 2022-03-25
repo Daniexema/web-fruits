@@ -5,8 +5,10 @@
     <input [(ngModel)]="filterNav" class="form-control mr-sm-2" type="search" placeholder="{{navBar.title}}" aria-label="Search">
   </form>
 </nav>-->
-
-<div class="col mb-5" *ngFor="let item of products" >
+<div *ngIf="products?.length == 0" class="alert alert-info">
+    There are not product records in the database.
+</div>
+<div class="col mb-5" *ngFor="let item of products">
     <div class="card h-100">
         <!-- Product image-->
         <img class="card-img-top" src="{{item.img}}" alt="..." />

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 /*import {PRODUCTS} from './product.json';*/
 import {Product} from './Product';
-import {Observable,of} from 'rxjs';
+import {Observable,of,catchError,throwError} from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
+import swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 
 
@@ -11,12 +13,12 @@ import {HttpClient,HttpHeaders} from '@angular/common/http';
 })
 export class ProductService {
 
-private urlEndPoint:string="http://localhost:8080/api/products";
+  private urlEndPoint:string="http://localhost:8080/api/products";
 
 
-//init dependency injection
-private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
-  constructor(private httpvar:HttpClient) { }
+  //init dependency injection
+  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  constructor(private httpvar:HttpClient,private router:Router ) { }
 
   getProductos():Observable<Product[]>{
     return this.httpvar.get<Product[]>(this.urlEndPoint);
@@ -27,7 +29,13 @@ private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   }
 
   getProductById(id:any):Observable<Product>{
-    return this.httpvar.get<Product>(`${this.urlEndPoint}/${id}`);
+    return this.httpvar.get<Product>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+          swal.fire('Error al editar',e.error.mensaje,'error');
+          this.router.navigate(['/products']);
+          return throwError(e);
+      })
+    );
   }
 
   upDateProduct(product:Product):Observable<Product>{
