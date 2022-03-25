@@ -3,7 +3,7 @@
 
     <div class="body">
 
-<form (ngSubmit)="create()">
+<form>
 
 
 <div class="form-group row">
@@ -45,7 +45,11 @@
 
 <div class="form-group row" >
   <div class="col-sm-6">
-    <button class="btn btn-primary" role="button" name="button">Register</button>
+    <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!product.id else elseBlock" name="button">Register</button>
+    <ng-template #elseBlock>
+      <button class="btn btn-primary" role="button" (click)="actualizarProducto()" name="button">Edit Now</button>
+    </ng-template>
+
     </div>
 </div>
 

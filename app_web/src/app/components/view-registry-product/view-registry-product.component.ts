@@ -35,13 +35,20 @@ this.productService.create(this.product).subscribe(
 
 cargarProducto():void{
 this.activatedRoute.params.subscribe(params=>{
-let id = params['id'];
-    if(id){
-      this.productService.getProductById(id).subscribe((varProduct)=>this.product=varProduct);
+    let id = params['id'];
+        if(id){
+          this.productService.getProductById(id).subscribe((varProduct)=>this.product=varProduct);
+        }
+    })
+
+  }
+actualizarProducto():void{
+  this.productService.upDateProduct(this.product).subscribe(
+    productResponse => {
+      this.router.navigate(['/products']);
+      swal.fire('New Product',`Product ${productResponse.name} update check out on list products`,'success');
     }
-})
-
+  );
 }
-
 
 }

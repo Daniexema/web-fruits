@@ -26,8 +26,11 @@ private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
     return this.httpvar.post<Product>(this.urlEndPoint,product,{headers:this.httpHeaders});
   }
 
-  getProductById(id):Observable<Product>{
+  getProductById(id:any):Observable<Product>{
     return this.httpvar.get<Product>(`${this.urlEndPoint}/${id}`);
   }
 
+  upDateProduct(product:Product):Observable<Product>{
+    return this.httpvar.put<Product>(`${this.urlEndPoint}/${product.id}`,product,{headers:this.httpHeaders});
+  }
 }
