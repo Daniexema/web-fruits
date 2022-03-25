@@ -6,6 +6,7 @@ export class Product {
   name:string;
   descri:string;
   img:string;
-  detail:Detail[];
+  detail = new Detail;
+  
 
 }

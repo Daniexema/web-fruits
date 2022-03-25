@@ -13,4 +13,5 @@ export class HeaderComponent implements OnInit {
   }
 public cart:any={title:"Mi Carrito"}
 public prod:any={title:"Productos"}
+
 }

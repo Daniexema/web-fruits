@@ -1,5 +1,12 @@
 <!-- Separation for card number-->
-<div class="col mb-5" *ngFor="let item of products">
+
+<!-- <nav class="navbar navbar-light justify-content-between">
+  <form class="form-inline">
+    <input [(ngModel)]="filterNav" class="form-control mr-sm-2" type="search" placeholder="{{navBar.title}}" aria-label="Search">
+  </form>
+</nav>-->
+
+<div class="col mb-5" *ngFor="let item of products" >
     <div class="card h-100">
         <!-- Product image-->
         <img class="card-img-top" src="{{item.img}}" alt="..." />
@@ -16,7 +23,12 @@
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+            <div class="text-center">
+              <a class="btn btn-outline-dark mt-auto" href="#">View options</a>
+              <a class="btn btn-outline-dark mt-auto" [routerLink]="['../register/',item.id]">Edit</a>
+            </div>
+
         </div>
+
     </div>
 </div>

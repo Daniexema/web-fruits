@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+ constructor(private route:Router) {}
+
 
   ngOnInit(): void {
   }
+
+  public filterNav:any='';
+  public navBar:any={title:"Buscar"}
+
+
+  showVar(event:any){
+   this.route.navigate(['/products']); // navigate to other page
+  }
+
+
+  navBarVal(event:any){
+   return event;
+  }
+
+
 
 }

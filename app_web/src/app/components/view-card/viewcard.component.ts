@@ -16,6 +16,10 @@ constructor(private productService:ProductService){}
 products : Product[];
 //initial injection dependency from service
 
+filterNav='';
+
+public navBar:any={title:"Buscar"}
+
 ngOnInit(){
   this.productService.getProductos().subscribe(
     productPassParameter => this.products=productPassParameter

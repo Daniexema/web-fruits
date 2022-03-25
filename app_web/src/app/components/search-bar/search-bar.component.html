@@ -1,1 +1,5 @@
-<p>search-bar works!</p>
+<nav class="navbar navbar-light justify-content-between">
+  <form class="form-inline">
+    <input (ngModelChange)="showVar($event)" [(ngModel)]="filterNav" class="form-control mr-sm-2" type="search" placeholder="{{navBar.title}}" aria-label="Search">
+  </form>
+</nav>
