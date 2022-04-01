@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 /*import {PRODUCTS} from './product.json';*/
 import {Product} from './Product';
-import {Observable,of,catchError,throwError} from 'rxjs';
+import {Observable,of,catchError,throwError,map} from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import swal from 'sweetalert2';
 import {Router} from '@angular/router';
@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class ProductService {
 
   private urlEndPoint:string="http://localhost:8080/api/products";
+  private urlEndPointSerachNav="http://localhost:8080/api/loading";
 
 
   //init dependency injection
@@ -41,4 +42,19 @@ export class ProductService {
   upDateProduct(product:Product):Observable<Product>{
     return this.httpvar.put<Product>(`${this.urlEndPoint}/${product.id}`,product,{headers:this.httpHeaders});
   }
+
+searchProductByName(name:any):Observable<Product[]>{
+  return this.httpvar.get<Product[]>(`${this.urlEndPointSerachNav}/${name}`).pipe(
+    catchError(e =>{
+     swal.fire('No Encontrado',e.error.mensaje,'error');
+        this.router.navigate(['index']);
+      return throwError(e);
+    })
+  );
+}
+
+
+
+
+
 }
