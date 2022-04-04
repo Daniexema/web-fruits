@@ -36,6 +36,7 @@ this.productService.create(this.product).subscribe(
 cargarProducto():void{
 this.activatedRoute.params.subscribe(params=>{
     let id = params['id'];
+    console.log(id);
         if(id){
           this.productService.getProductById(id).subscribe((varProduct)=>this.product=varProduct);
         }

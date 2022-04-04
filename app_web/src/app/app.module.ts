@@ -13,6 +13,7 @@ import { ViewProductsComponent } from './components/view-products/view-products.
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ViewRegistryProductComponent } from './components/view-registry-product/view-registry-product.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
+import { ViewNavBarComponent } from './components/view-nav-bar/view-nav-bar.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'index',component:IndexComponent},
   { path: 'cart', component: ShoppingcartComponent },
   { path: 'products', component: ViewProductsComponent },
+  { path: 'searching/:name', component: ViewNavBarComponent },
   { path: 'register', component: ViewRegistryProductComponent },
   { path: 'register/:id', component: ViewRegistryProductComponent }
 
@@ -39,7 +41,8 @@ const routes: Routes = [
     ViewProductsComponent,
     SearchBarComponent,
     ViewRegistryProductComponent,
-    FilterPipe
+    FilterPipe,
+    ViewNavBarComponent
   ],
   imports: [
     BrowserModule,
