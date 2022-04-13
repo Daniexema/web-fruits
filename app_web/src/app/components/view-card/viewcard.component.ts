@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from './Product';
 import{ ProductService } from './product.service';
+import{ ActivatedRoute } from '@angular/router';
 
 
 
@@ -11,18 +12,34 @@ import{ ProductService } from './product.service';
 })
 export class ViewcardComponent implements OnInit{
 
-constructor(private productService:ProductService){}
+constructor(private productService:ProductService, private route:ActivatedRoute){}
 
 products : Product[];
-//initial injection dependency from service
+paginador:any;
 
 filterNav='';
 
 public navBar:any={title:"Buscar"}
 
 ngOnInit(){
-  this.productService.getProductos().subscribe(
-    productPassParameter => this.products=productPassParameter
-  );
+
+  this.route.paramMap.subscribe(params=>{
+
+    let page:number = +params.get('page');
+    console.log("Entrando al menor al paramaMap de recibido de parametros"+ page);
+    if(!page){
+      page=0;
+    }
+
+    this.productService.getProductos(page).subscribe(
+      response => {
+
+        this.paginador=response;
+        this.products=response.content as Product[];
+        console.log("Probando los datos si estan llegando"+this.paginador.totalPages+"page ==>"+page);
+
+      });
+  });
+
 }
 }
