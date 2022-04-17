@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {ViewcardComponent} from './components/view-card/viewcard.component';
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 import  {HeaderComponent} from './components/header/header.component';
@@ -14,9 +14,11 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ViewRegistryProductComponent } from './components/view-registry-product/view-registry-product.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { ViewNavBarComponent } from './components/view-nav-bar/view-nav-bar.component';
-
-
-
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HttpInterceptorService } from './service/HttpInterceptor.service';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './service/AuthGuard';
 
 const routes: Routes = [
   { path: '',redirectTo:"/index", pathMatch:"full"},
@@ -25,7 +27,10 @@ const routes: Routes = [
   { path: 'products', component: ViewProductsComponent },
   { path: 'searching/:name', component: ViewNavBarComponent },
   { path: 'register', component: ViewRegistryProductComponent },
-  { path: 'register/:id', component: ViewRegistryProductComponent }
+  { path: 'register/:id', component: ViewRegistryProductComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]}
 
 ];
 //*Material-UI
@@ -42,7 +47,9 @@ const routes: Routes = [
     SearchBarComponent,
     ViewRegistryProductComponent,
     FilterPipe,
-    ViewNavBarComponent
+    ViewNavBarComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,11 @@ const routes: Routes = [
     FormsModule
     ],
     //Remeber inject el service from providers
-  providers: [ProductService],
+  providers: [ProductService,
+             {provide: HTTP_INTERCEPTORS,
+              useClass: HttpInterceptorService,
+              multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
