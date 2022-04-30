@@ -15,8 +15,8 @@ import { ViewRegistryProductComponent } from './components/view-registry-product
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { ViewNavBarComponent } from './components/view-nav-bar/view-nav-bar.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 const routes: Routes = [
@@ -51,7 +51,9 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule
     ],
     //Remeber inject el service from providers
   providers: [ProductService],

@@ -18,7 +18,7 @@
   </li>
 
   <li class="page-item" [ngClass]="paginador.last?'disabled':''">
-    <a class="page-link" [routerLink]="['/products/page/',paginador.tatalPages-1]">Última</a>
+    <a class="page-link" [routerLink]="['/products/page/',paginador.totalPages-1]">Última</a>
   </li>
   <li class="page-item" *ngIf="paginador.number < paginador.totalPages-1">
     <a class="page-link" [routerLink]="['/products/page/',paginador.number+1]">&raquo;</a>

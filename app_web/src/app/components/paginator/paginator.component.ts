@@ -41,7 +41,7 @@ private initPaginador():void{
   this.hasta=Math.max(Math.min(this.paginador.totalPages,this.paginador.number+4),6);
   console.log("HASTA =====>"+this.hasta);
   if(this.paginador.totalPages>5){
-    this.paginas= new Array(this.desde-this.hasta +1).fill(0).map( (_valor,indice) => indice + this.desde);
+    this.paginas= new Array(this.hasta - this.desde +1).fill(0).map( (_valor,indice) => indice + this.desde);
     console.log("ENTRANDO IF TRUE =====>"+this.paginador.totalPages);
   }else{
     this.paginas= new Array(this.paginador.totalPages).fill(0).map( (_valor,indice) => indice + 1);

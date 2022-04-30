@@ -8,7 +8,8 @@ import{ ActivatedRoute } from '@angular/router';
 
 @Component({
   selector:'app-view-card',
-  templateUrl: './viewcard.component.html'
+  templateUrl: './viewcard.component.html',
+  styleUrls: ['./viewcard.component.css']
 })
 export class ViewcardComponent implements OnInit{
 
