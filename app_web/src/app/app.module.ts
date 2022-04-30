@@ -17,6 +17,7 @@ import { ViewNavBarComponent } from './components/view-nav-bar/view-nav-bar.comp
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'products/page/:page', component: ViewProductsComponent },
   { path: 'searching/:name', component: ViewNavBarComponent },
   { path: 'register', component: ViewRegistryProductComponent },
-  { path: 'register/:id', component: ViewRegistryProductComponent }
+  { path: 'register/:id', component: ViewRegistryProductComponent },
+  { path: 'login', component: LoginComponent }
 
 ];
 //*Material-UI
@@ -45,7 +47,8 @@ const routes: Routes = [
     ViewRegistryProductComponent,
     FilterPipe,
     ViewNavBarComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
