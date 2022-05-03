@@ -13,8 +13,8 @@
                </div>
                <div class="col-md-4"></div>
            </div>
-          <a type="button" class="btn btn-outline-success"><span class="bi bi-cart"></span> Añadir</a>
-          <a class="btn btn-outline-dark mt-auto" [routerLink]="['../register/',item.id]">Edit</a>
+          <a type="button" class="btn btn-outline-success" ><span class="bi bi-cart"></span> Añadir</a>
+          <a type="button" class="btn btn-outline-success" (click)="editProduct(item.id)"><span class="bi bi-pencil-square"></span> Edit</a>
         </div>
     </div>
     <br>

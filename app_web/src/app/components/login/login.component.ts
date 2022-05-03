@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   password: string;
   message: any
   
-  constructor() { 
+  constructor(private router : Router) { 
     
   }
 
@@ -20,6 +21,10 @@ export class LoginComponent implements OnInit {
 
   login() {
   
+  }
+
+  goIndex(){
+    this.router.navigate(['/index']);
   }
 
 }
