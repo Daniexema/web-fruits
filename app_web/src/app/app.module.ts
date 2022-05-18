@@ -14,6 +14,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ViewRegistryProductComponent } from './components/view-registry-product/view-registry-product.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { ViewNavBarComponent } from './components/view-nav-bar/view-nav-bar.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HttpInterceptorService } from './service/HttpInterceptor.service';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'index',component:IndexComponent},
   { path: 'cart', component: ShoppingcartComponent },
   { path: 'products', component: ViewProductsComponent },
+  { path: 'products/page/:page', component: ViewProductsComponent },
   { path: 'searching/:name', component: ViewNavBarComponent },
   { path: 'register', component: ViewRegistryProductComponent },
   { path: 'register/:id', component: ViewRegistryProductComponent },
@@ -48,6 +50,7 @@ const routes: Routes = [
     ViewRegistryProductComponent,
     FilterPipe,
     ViewNavBarComponent,
+    PaginatorComponent,
     LoginComponent,
     ProfileComponent
   ],
