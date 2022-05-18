@@ -21,12 +21,17 @@ export class ProductService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   constructor(private httpvar:HttpClient,private router:Router ) { }
 
-  getProductos():Observable<Product[]>{
-    return this.httpvar.get<Product[]>(this.urlEndPoint);
+  getProductos(page:number):Observable<any>{
+    return this.httpvar.get(this.urlEndPoint+'/page/'+page).pipe(
+      map((response:any)=>{
+        return response;
+      })
+
+    );
     }
 
-  create(product:Product):Observable<Product>{
-    return this.httpvar.post<Product>(this.urlEndPoint,product,{headers:this.httpHeaders});
+  create(product:Product):Observable<any>{
+    return this.httpvar.post<any>(this.urlEndPoint,product,{headers:this.httpHeaders});
   }
 
   getProductById(id:any):Observable<Product>{

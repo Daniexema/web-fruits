@@ -27,8 +27,9 @@ export class ViewRegistryProductComponent implements OnInit {
 //pasamos el producto del formulario que estamos recibiendo este metodo lo encontramos en product.service de la carpeta view-card
 this.productService.create(this.product).subscribe(
   response => {
+    console.log(response);
     this.router.navigate(['/products'])
-    swal.fire('New Product',`Product ${response.name} success check out on list products`,'success');
+    swal.fire('New Product',`Product ${response.producto.name} success check out on list products`,'success');
   }
 );
   }
