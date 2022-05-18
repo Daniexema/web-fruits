@@ -1,38 +1,23 @@
-<!-- Separation for card number-->
-
-<!-- <nav class="navbar navbar-light justify-content-between">
-  <form class="form-inline">
-    <input [(ngModel)]="filterNav" class="form-control mr-sm-2" type="search" placeholder="{{navBar.title}}" aria-label="Search">
-  </form>
-</nav>-->
-<div *ngIf="products?.length == 0" class="alert alert-info">
-    There are not product records in the database.
-</div>
-<div class="col mb-5" *ngFor="let item of products">
-    <div class="card h-100">
-        <!-- Product image-->
-        <img class="card-img-top" src="{{item.img}}" alt="..." />
-        <!-- Product details-->
-        <div class="card-body p-4">
-            <div class="text-center">
-                <!-- Product name-->
-                <h3 class="fw-bolder">{{item.name}}</h3>
-                <!-- Product price-->
-             <h5 class="fw-bolder">$ {{item.detail.price}}</h5>
-              <h5 class="fw-bolder">{{item.descri}}</h5>
-
-            </div>
+<h1>Productos</h1>
+<div class="row">
+  <div *ngFor="let item of products" class="col-sm-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <p class="card-text">{{item.name}} $ {{item.detail.price}}</p>
+        <img class="card-img-top" src="{{item.img}}" alt="..." style="width:150px;height:150px;" />
+        <p class="card-text">{{item.descri}}</p>
+           <div  class="row">
+               <div class="col-md-4"></div>
+               <div class="col-md-4">
+                  <input style="margin: 10px;" type="number" class="form-control" id="inputsm" value="1" min="0">
+               </div>
+               <div class="col-md-4"></div>
+           </div>
+          <a type="button" class="btn btn-outline-success" ><span class="bi bi-cart"></span> Añadir</a>
+          <a type="button" class="btn btn-outline-success" (click)="editProduct(item.id)"><span class="bi bi-pencil-square"></span> Edit</a>
         </div>
-        <!-- Product actions-->
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-              <a class="btn btn-outline-dark mt-auto" [routerLink]="['../register/',item.id]">Edit</a>
-            </div>
-
-        </div>
-
     </div>
-
+    <br>
+  </div>
 </div>
-<paginator-nav *ngIf="paginador" [paginador]='paginador'></paginator-nav>
+<paginator-nav *ngIf="paginador" [paginador]='paginador'></paginator-nav> 

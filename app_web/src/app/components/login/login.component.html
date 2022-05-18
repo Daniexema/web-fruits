@@ -1,15 +1,18 @@
-<!-- <div class="alert alert-danger" [hidden]="!error">
-	There was a problem logging in. Please try again.
-</div> -->
-<br><br><br><br><br><br><br><br><br>
-<form role="form" (submit)="login()">
-	<div class="form-group">
-		<label for="username">Username:</label> <input type="text"
-			class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
-	</div>
-	<div class="form-group">
-		<label for="password">Password:</label> <input type="password"
-			class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<a class="nav-link" routerLink="/" (onClick)="goIndex()">Inicio</a>
+  <body class="text-center">
+    <form class="form-signin">
+      <!-- <img class="mb-4" src="assets/images/pro2.png" alt="" width="100" height="100"> -->
+      <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Recordarme
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+      <p class="mt-5 mb-3 text-muted">&copy; By JADA</p>
+    </form>
+

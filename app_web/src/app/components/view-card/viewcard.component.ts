@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from './Product';
 import{ ProductService } from './product.service';
-import{ ActivatedRoute } from '@angular/router';
+import{ ActivatedRoute, Router } from '@angular/router';
 
 
 
 
 @Component({
   selector:'app-view-card',
-  templateUrl: './viewcard.component.html'
+  templateUrl: './viewcard.component.html',
+  styleUrls: ['./viewcard.component.css']
 })
 export class ViewcardComponent implements OnInit{
 
-constructor(private productService:ProductService, private route:ActivatedRoute){}
+constructor(private productService:ProductService,
+            private route:ActivatedRoute,
+            private router : Router){}
 
 products : Product[];
 paginador:any;
@@ -42,4 +45,9 @@ ngOnInit(){
   });
 
 }
+
+editProduct(itemId : any){
+  this.router.navigate(['/register/'+itemId]);
+}
+
 }
